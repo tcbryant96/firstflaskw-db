@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%}{%endblock title%}
+{%block content%}
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        {{ form.number.label }}
+        {{ form.number(class='form-control mb-3', placeholder='(555)555-5555') }}
+
+        {{ form.provider.label }}
+        {{ form.provider(class='form-control', placeholder='Company Provider') }}
+
+        
+        <p class="mt-3">**keep track of who you provided phone number to here**</p>
+        {{ form.provided_to(class='form-control', placeholder='Provided To') }}
+
+       
+
+        {{ form.submit(class='btn btn-warning w-100 mt-3') }}
+    </div>
+</form>
+{%endblock content%}

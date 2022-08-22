@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%block title%}Create Address{%endblock title%}
+{%block content%}
+<h1>Create Address</h1>
+<form method="post">
+    {{ form.csrf_token}}
+    <div class = "form-group">
+        
+        {{ form.address.label}}
+        {{form.address(class = 'form-control mb-3', placeholder = 'Enter Address')}}
+       
+        {{ form.apartment.label}}
+        {{form.apartment(class = 'form-control mb-3', placeholder = 'Enter Apartment, Suite, etc.')}}
+        
+        
+        {{ form.city.label}}
+        {{form.city(class = 'form-control mb-3', placeholder = 'Enter City')}}
+
+        {{ form.state.label}}
+        {{form.state(class = 'form-control mb-3', placeholder = 'Enter State')}}
+        
+        {{ form.country.label}}
+        {{form.country(class = 'form-control mb-3', placeholder = 'Enter Country')}}
+
+        {{ form.zip.label}}
+        {{form.zip(class = 'form-control mb-3', placeholder = 'Enter Zip')}}
+
+        {{ form.submit(class='btn btn-warning w-100 mt-3') }}
+
+    </div>
+</form>
+
+{%endblock content%} 

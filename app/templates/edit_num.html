@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit {{number.number}}{% endblock title%}
+
+{%block content%} 
+<h2 class="text-center">Edit {{number.number}}</h2>
+
+<form method="post">
+    {{ form.csrf_token}}
+    <div class = "form-group">
+        {{ form.number.label}}
+        {{form.number(class = 'form-control mb-3', value= number.number)}}
+       
+        {{ form.provider.label}}
+        {{form.provider(class = 'form-control mb-3', value= number.provider)}}
+
+        
+
+        {{ form.submit(class='btn btn-warning w-100 mt-3') }}
+
+
+    </div>
+</form>
+{%endblock content%}

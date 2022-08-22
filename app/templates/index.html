@@ -1,8 +1,105 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
-{%block title%}Home{%endblock title%}
+{% block title %} Home {% endblock title %}
 
-{%block content%}
-<h2 class="text-center">Welcome to homepage</h2>
-{%endblock content%}
+{% block content %}
+<div class="row">
+    <div class="col-3 pt-3 pb-3">  
+        <img src="{{url_for('static', filename='info.png')}}" class="img-fluid" >
+    </div>
+    <div class="col-8  d-flex justify-content-center  align-items-center pt-4">
+        <p class="fs-1 fw-bolder text-center me-3">Information</p>
+        
+        <p class="fs-1 fw-bolder text-center">Database</h1>
+    
+    </div>
+</div>
+{%if current_user.is_anonymous%}
+<div class="row mt-2">
+    <div class="card">
+        <h5 class="card-header">Sign Up For Free!</h5>
+        <div class="card-body ">
+          <h5 class="card-title">Start Now</h5>
+          <p class="card-text">Start keeping track of all your information for free. No trial, no catch, no risk.</p>
+          <a href="{{ url_for('signup') }}" class="btn btn-outline-dark">Sign Up</a>
+        </div>
+    </div>
+</div>
+<div class="row mt-5 justify-content-between">
+    <div class="col-sm-5 ">
+      <div class="card">
+        <div class="card-body text-center">
+          <h4 class="card-title">Address Book</h4>
+          <p class="card-text">Keep track of  all past, current, and future addresses.</p>
+          <img src="{{url_for('static', filename='address.png')}}">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-body text-center">
+          <h4 class="card-title">Emails</h4>
+          <p class="card-text">No need to keep track of all your emails and what they are for. We take care of that for you.</p>
+          <div class="text-center">
+          <img src="{{url_for('static', filename='email.png')}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5 justify-content-between">
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-body text-center">
+          <h4 class="card-title">Phone Book</h4>
+          <p class="card-text">Keep track of all your cell, home, and business numbers.</p>
+          <img src="{{url_for('static', filename='phone book.png')}}">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Friends And Family</h5>
+          <p class="card-text">Keep track of all this information not only for yourself, but for friends and family too.</p>
+          <img src="{{url_for('static', filename='friend.png')}}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+{%endif%}
+{%if current_user.is_authenticated %}
+<div class="card mb-5" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{url_for('static', filename='address.png')}}" class="img-fluid rounded-start pt-2" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Address Book</h5>
+          <p class="card-text">Manage your addresses how you see fit. Click the link to manage and view your addresses.</p>
+          <a href="{{ url_for('view_address') }}" class="btn btn-outline-dark">View Addresses</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{url_for('static', filename='phone book.png')}}" class="img-fluid rounded-start pt-2" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Phone Book </h5>
+          <p class="card-text">Keep track of you phone numbers and who you provided them too.</p>
+          <a href="{{ url_for('phone_book') }}" class="btn btn-outline-dark">View Phone Numbers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+{%endif%}
+
+{% endblock content %}
 
